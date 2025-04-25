@@ -1,0 +1,9 @@
+tensorflow==1.15.0
+opencv-python==4.5.3.56
+pillow
+imageio
+numpy
+fastapi
+uvicorn
+python-multipart
+
