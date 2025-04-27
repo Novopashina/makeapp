@@ -11,6 +11,8 @@ import traceback
 
 app = FastAPI()
 
+print("Current working directory:", os.getcwd())
+
 os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
