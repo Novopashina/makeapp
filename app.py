@@ -62,6 +62,10 @@ class DMT:
 
 neural_network = DMT()
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.post("/process_images")
 async def process_images(image1: UploadFile = File(...), image2: UploadFile = File(...)):
     try:
