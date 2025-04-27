@@ -7,6 +7,7 @@ import tempfile
 import os
 import cv2
 from imageio import imread
+import traceback 
 
 app = FastAPI()
 
@@ -70,7 +71,9 @@ async def process_images(image1: UploadFile = File(...), image2: UploadFile = Fi
             f2.write(await image2.read())
             image2_path = f2.name
 
+        print(f"Processing images: {image1_path}, {image2_path}")
         result_image = neural_network.pairwise(image1_path, image2_path)
+        print("Image processing completed")
 
         _, buffer = cv2.imencode('.jpg', result_image)
         content = buffer.tobytes()
@@ -80,6 +83,8 @@ async def process_images(image1: UploadFile = File(...), image2: UploadFile = Fi
 
         return Response(content, media_type="image/jpeg")
     except Exception as e:
+        print("ERROR OCCURRED")
+        traceback.print_exc()
         return Response(content=str(e), status_code=500)
 
 if __name__ == "__main__":
