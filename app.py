@@ -87,5 +87,4 @@ async def process_images(image1: UploadFile = File(...), image2: UploadFile = Fi
         traceback.print_exc()
         return Response(content=str(e), status_code=500)
 
-if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8080)
+
