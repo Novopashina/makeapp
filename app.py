@@ -93,4 +93,7 @@ async def process_images(image1: UploadFile = File(...), image2: UploadFile = Fi
         traceback.print_exc()
         return Response(content=str(e), status_code=500)
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
 
